@@ -61,8 +61,17 @@ submit.addEventListener("click" , () => {
 
         // IP address range
 
-        iprange.textContent = "IP range is " + decIpv4[0] + "." + decIpv4[1] + "." + decIpv4[2] + "." + "0 " + "to " + decIpv4[0] + "." + decIpv4[1] + "." + decIpv4[2] + "." + "255"
-        converter.appendChild(iprange)
+        if (decIpv4[0] <= 223) {
+            iprange.textContent = "IP range is " + decIpv4[0] + "." + decIpv4[1] + "." + decIpv4[2] + "." + "0 " + "to " + decIpv4[0] + "." + decIpv4[1] + "." + decIpv4[2] + "." + "255"
+            converter.appendChild(iprange)
+        } else if (decIpv4[0] > 239) {
+            iprange.textContent = "Class E doesnt have IP range for host"
+            converter.appendChild(iprange)
+        } else {
+            iprange.textContent = "Class D doesnt have IP range for host"
+            converter.appendChild(iprange)
+        }
+        
 
         // Total possible host id calculation
 
